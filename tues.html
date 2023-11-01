@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="c_password" type="password">
+    <button onclick="showpass(event)">show</button>
+    <br><br>
+    <input id="password" type="password">
+    <button onclick="showpass(event)">show</button>
+    <div id="div1"></div>
+</body>
+<script>
+    let password = document.getElementById("c_password")
+    let password1 = document.getElementById("password")
+function showpass(hide){
+    if(password.type === "password"){
+        password.type = "text"
+    hide.target.innerHTML = "hide"
+    }else {
+        password.type = "password"
+        
+    hide.target.innerHTML = "show"
+    }
+    
+}
+//set time out
+setTimeout(()=>{
+    alert("delay for 5 sec")
+}, 5000)
+setInterval(()=>{
+    let div1 = document.getElementById("div1");
+    let date = new Date()
+    console.log("Daniel");
+    console.log("Samuel");
+    console.log(date.getSeconds());
+    let sec = date.getSeconds();
+    div1.innerHTML = sec
+},1000)
+</script>
+</html>

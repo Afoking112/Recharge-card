@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="text">
+     <button onclick="ChangeColor()">Change color</button>
+     <div id="div4"></div>
+     <input type="number" name="display" id="answer">
+     <input type="number" name="display" id="answer2">
+<br>
+
+<input placeholder="Additon" type="button" onclick="add('+')">
+<input placeholder="substraction" type="button" onclick="add('-')">
+<input placeholder="Multiplication" type="button" onclick="add('*')">
+<input placeholder="Division" type="button" onclick="add('/')">
+<div id="div6"></div>
+
+<!-- 
+     <button onclick="displayNum(1)">1</button>
+     <button onclick="displayNum(2)">2</button>
+     <button onclick="displayNum(3)">3</button>
+     <button onclick="displayNum(4)">4</button>
+     <button onclick="displayNum(5)">5</button>
+     <button onclick="displayNum(6)">6</button>
+     <button onclick="displayNum(7)">7</button>
+     <button onclick="displayNum(8)">8</button>
+     <button onclick="displayNum(9)">9</button>
+     <button onclick="displayNum(0)">0</button>
+     <button onclick="displayNum('/')">/</button>
+     <button onclick="displayNum('*')">*</button>
+     <button onclick="displayNum('+')">+</button>
+     <button onclick="displayNum('-')">-</button>
+     <button onclick="display.value = eval(displayNum.value)">=</button> -->
+
+    <div id="div5"></div>
+
+
+</body>
+<script>
+    // let div5 = document.getElementById("div5")
+    // function displayNum(num){
+    //     const answer = parseFloat(document.getElementById("answer").value);
+    //     answer.innerText += num
+    // }
+    let div4 = document.getElementById("div4")
+    function ChangeColor(){
+        let color = input.value;
+        div4.style.background = color;
+    }
+    div4.style.width = "200px"
+    div4.style.height = "200px"
+    
+    let answer = document.getElementById("answer")
+    let answer2 = document.getElementById("answer2")
+    let test1 = document.getElementById("result")
+
+    function add(sign){
+        let num1 = Number(answer.value)
+       let num2 = Number(answer2.value) 
+
+       if (sign === "+"){
+        div6.innerHTML =num1 + num2
+       }else if (sign === "-") {
+        div6.innerHTML =num1 - num2
+       }else if (sign === "*") {
+        div6.innerHTML =num1 * num2
+       }else if (sign === "/") {
+        div6.innerHTML =num1 / num2
+       }
+    }
+    </script>
+</html>

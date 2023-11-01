@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const arr1 = [1,2,3,4,5,6,7,8,9,0];
+    arr1.forEach((item, index)=>{
+        console.log(item * 9)
+    })
+    let arr2 = arr1.map((item, index)=>{
+        return item * 27
+    })
+    console.log(arr2)
+    let arr3 = ["chealsea", "Bayern", "liverpool", "Barcelona"];
+    let testarr = arr3.map((item, index)=>{
+        console.log(`I support ${item}`)
+        return `I support ${item}`;
+    })
+    console.log(testarr)
+
+    let testarr2 = arr1.filter((item, index)=>{
+        return item %2 === 0
+    })
+    console.log(testarr2)
+
+    let testarr3 = arr3.filter((item, index)=>{
+        return item.includes("a")
+    })
+    console.log(testarr3)
+
+    let num1 = arr2.find((item, index)=>{
+        return item %2 === 0
+    })
+    console.log(num1)
+
+    let num2 = arr1.reduce((total,item,index)=>{
+        return total + index
+    }, 0)
+    console.log(num2)
+
+    let testarr4 = [
+        { name: "Afolabi", age: 1111, club:"Arsenal", gender:"Male", issingle: true},
+        { name: "Daniel", age: 1112, club:"Arsenal", gender:"Male", issingle: false},
+        { name: "Afolabi", age: 1114, club:"Arsenal", gender:"Male", issingle: true},
+        { name: "Afolabi", age: 1115, club:"Arsenal", gender:"Male", issingle: true},
+        { name: "Afolabi", age: 1116, club:"Arsenal", gender:"Male", issingle: true},
+    ]
+
+    let num3 = testarr4.reduce((total,item,index)=>{
+        return total + item.age
+    }, 0)
+    console.log(num3);
+
+    const fruit = ["Mango", "Oranges", "Pinapples", "kiwi"]
+    let [fruit1, fruit2, fruit3, fruit4] = fruit
+    console.log(fruit)
+
+    let obj1 =    { name: "Afolabi", age: 1111, club:"Arsenal", gender:"Male", issingle: true}
+    let { name, age, club,issingle} =obj1
+    console.log(issingle)
+
+    let arr5 =[1,2,3,4,5]
+    let arr6 =[6,7,8,9,0]
+    let arr7 =[...arr5, ...arr6]
+    console.log(arr7)
+</script>
+</html>

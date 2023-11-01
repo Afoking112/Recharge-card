@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/a9d5636e18.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .body{
+        background: black;
+        height: 100vh;
+        width: 100%;
+        position: relative;
+    }
+    #frame{
+        height: 600px;
+        left: 400px;
+        width: 400px;
+        background-color: white;
+        position: absolute;
+        top: 70px;
+    }
+    .top{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        width: 90%;
+        /* background-color: red ; */
+    }
+    .topo{
+        background-color: transparent;
+        border: 1px solid black;
+        width: 17px;
+        height: 15px;
+        position: absolute;
+        top: 5px;
+    }
+
+    .lfet{
+        right: 10px;
+        position: absolute;
+         display: inline-flex;
+        gap: 50px;
+        font-size: 20px;
+        justify-content: space-evenly;
+}
+.sec{
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    display: flex;
+    gap: 20px;
+    width: 90%;
+}
+.cc{
+    position: absolute;
+    right: 0px;
+}
+</style>
+<body>
+    <div class="body">
+    <div id="frame">
+        <div class="top">
+            <p>Calculator</p>
+            <div class="lfet">
+                <p>-</p>
+                <button class="topo"></button>
+                <p>x</p>
+            </div>
+        </div>
+<div class="sec">
+    <i class="fa-solid fa-bars"></i>
+    <b>Standard</b>
+    <i class="fa-solid fa-clock-rotate-left cc"></i>
+
+</div>
+        
+
+
+
+
+
+
+    </div>
+
+</div>
+</body>
+</html>

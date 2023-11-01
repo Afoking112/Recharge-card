@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input
+     type="number"
+     id="display"
+     max="0"
+     min="10"
+     > -->
+    <button  onclick="increase()">+</button>
+    
+    <button  onclick="decrease()">-</button>
+</body>
+<script>
+let display = document.getElementById("display")
+
+
+// function increase(sign){
+//     // display.innerHTML = Number + 1
+//     let num = Number(display.value)
+
+//     if( sign === "+"){
+//         display.value =  num + 1
+//     }else if( sign === "-"){
+//         display.value = num - 1
+//     }
+// }
+
+let num = 0;
+display.innerHTML = num;
+function increase(){
+    if(num == 10){
+        return
+    }else{
+        num++
+        display.innerHTML = num;
+    }
+}
+</script>
+</html>

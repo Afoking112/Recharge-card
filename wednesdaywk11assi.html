@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="input1">
+    <input type="text" name="" id="input2">
+    <button  onclick="me()">check</button>
+    <div id="div1"></div>
+
+</body>
+<script>
+
+function me(){
+
+    let input1 = document.getElementById("input1").value;
+    let input2 = document.getElementById("input2").value;
+    let div1 = document.getElementById("div1");
+
+    // let num1 = parseFloat(input1)
+    // let num2 = parseFloat(input2)
+
+
+    for(i = 1; i <= input2; i++){
+    result = input1 * i;
+    div1.innerHTML += input1 + "x"+ i + "="+ result + "<br>"
+}
+}  
+
+    
+
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let array1 = [1,2,3,4,5,6,7,8,9]
+    let array2 = [11,12,13,14,15,16,17,18,19]
+    console.log (array1, array2)
+
+    // string method and properties in js
+    let firstName = "i SUPPORT CHEALSEA FOOTBALL CLUB"
+    console.log(firstName.length); // return the lenght of a string 
+
+    console.log(firstName.slice(10,17))//return a sub string from astring. Takes 2 argument, first one is the position of the
+    // first character of the substring or the word to be extracted and the second one is the position of the last character of thyee the substring or word to be extracted plus one
+
+    console.log(firstName.slice(2)) //in this case our slice start counting from the end of the string 
+    //return the character from the end of the string upward 
+
+    console.log(firstName.substring(-10,13))//return a sub string from a string . takes 2 argument 
+    // first one is the position of the first character of the substring or word to be extracted 
+    //and the second one is the position of the last character of the spring or word to be extracted
+
+    console.log(firstName.substr(18,13))//return a sub string in a string . first one is the position
+    // of the first character of the substring or the word to be extracted and the second one is the 
+    //number of the character you want in the new spring 
+
+    let club2 = (firstName.replace("CHEALSEA","Arsenal"))// return a new spring whete a word in the original
+    //has been replaced and the second one is replacement  
+    console.log(club2)
+    let arr1 = firstName.split(" ")//convert a string to an array  
+    console.log(arr1)
+    let str = "i like eating beans. Bread with beans"
+    console.log(str.toLowerCase())
+    console.log(str.indexOf("beans"))
+    console.log(str.lastIndexOf("beans"))
+
+    
+
+</script>
+</html>

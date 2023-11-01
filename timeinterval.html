@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+</head>
+<style>
+    body {
+        background-color: rgb(231, 13, 13);
+    }
+    #box {
+        height: 500px;
+        width: 60%;
+        background-color: rgb(216, 212, 206);
+        text-align: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 100px;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+    #p2, #p3, #p4 {
+        font-size: 30px;
+        margin-top: 100px;
+    }
+    #in {
+        margin-top: 60px;
+    }
+    #btn {
+        height: 40px;
+        width: 130px;
+        background-color: wheat;
+        border: 0;
+    }
+    input {
+        height: 30px;
+        width: 60px;
+        text-align: center;
+        font-size: 20px;
+    }
+    #btnt {
+        height: 50px;
+        width: 300px;
+        background-color: green;
+        border: 0;
+        font-size: 30px;
+    }
+    #div1{
+        height: fit-content;
+        width: fit-content;
+        background-color: rgba(157, 175, 169, 0.534);
+        font-size: 30px;
+        margin-left: 300px;
+        text-align: center;
+        padding: 20px;
+        padding-left: 100px;
+        padding-right: 200px;
+        line-height: 40px;
+    }
+</style>
+<body>
+    <div id="box">
+        <button id="p2"></button>:
+        <button id="p3"></button>:
+        <button id="p4"></button>
+        <div id="in">
+            <button id="btn">Set alarm</button><br><br>
+            <input placeholder="00" type="number" id="hour"> :
+            <input placeholder="00" type="number" id="minute"><br><br>
+            <button id="btnt">Set Alarm</button><br>
+            <button id="stop">STOP</button>
+            <audio id="alarmsound" src="emergency-alarm-with-reverb-29431.mp3"></audio>
+        </div>
+    </div>
+    <div id="div1"></div>
+</body>
+<script>
+    let p2 = document.getElementById("p2");
+    let p3 = document.getElementById("p3");
+    let p4 = document.getElementById("p4");
+
+    let nowdate = setInterval(() => {
+        let date = new Date();
+        p2.innerHTML = `${date.getHours()}`;
+        p3.innerHTML = `${date.getMinutes()}`;
+        p4.innerHTML = `${date.getSeconds()}`;
+    }, 1000);
+
+    let alarm = [];
+
+    function renderAlarms() {
+        const div1 = document.getElementById("div1");
+        div1.innerHTML = alarm.map((time, index) => {
+            return `${time} <button class="edit" data-index="${index}">Edit</button> <button class="delete" onclick="edititem" data-index="${index}">Delete</button>`;
+        }).join("<br>");
+    }
+
+    renderAlarms();
+
+    document.getElementById("btnt").addEventListener("click", function () {
+        const hour = parseInt(document.getElementById("hour").value);
+        const minute = parseInt(document.getElementById("minute").value);
+
+        if (!isNaN(hour) && !isNaN(minute)) {
+            const now = new Date();
+            const alarmTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, 0);
+            const timeUntilAlarm = alarmTime - now;
+
+            if (timeUntilAlarm > 0) {
+                setTimeout(function () {
+                    alert("Time to wake up!");
+                    document.getElementById("alarmsound").play();
+                }, timeUntilAlarm);
+            }
+
+            alarm.push(`${hour}:${minute}`);
+            localStorage.setItem("alarms", JSON.stringify(alarm));
+            renderAlarms();
+        }
+    });
+
+    document.getElementById("div1").addEventListener("click", function (event) {
+        if (event.target.classList.contains("delete")) {
+            const index = event.target.getAttribute("data-index");
+            alarm.splice(index, 1);
+            localStorage.setItem("alarms", JSON.stringify(alarm));
+            renderAlarms();
+        }
+           else if (event.target.classList.contains("edit")) {
+            const index = event.target.getAttribute("data-index");
+            const newTime = prompt("Enter a new time (HH:MM)", alarm[index]);
+            if (newTime) {
+                alarm[index] = newTime;
+                localStorage.setItem("alarms", JSON.stringify(alarm));
+                renderAlarms();
+            }
+        }
+    });
+
+    document.getElementById("stop").addEventListener("click", function () {
+        document.getElementById("alarmsound").pause();
+        document.getElementById("alarmsound").currentTime = 0;
+    });
+
+    function edititem(){
+        newn = prompt("enter hour")
+        
+    }
+    // Function to get alarms from local storage
+    function getFromLocalStorage() {
+        const savedAlarms = JSON.parse(localStorage.getItem("alarms"));
+        if (savedAlarms) {
+            alarm = savedAlarms;
+            renderAlarms();
+        }
+    }
+
+    // Call the function to load alarms from local storage when the page loads
+    getFromLocalStorage();
+</script>
+</html>

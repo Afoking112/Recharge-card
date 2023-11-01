@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        width: 400px;
+        height: 400px;
+        /* box-shadow: 7px 5px 0px 5px; */
+        text-align: center;
+        line-height: 50px;
+        background-color: rgb(235, 233, 230);
+        position: relative;
+        margin-left: 400px;
+        border: 1px solid black;
+        padding-right: 20px;
+        border-radius: 10px;
+    }
+    input{
+        width: 300px;
+        height: 40px;
+        border: 0;
+        font-size: 14px;
+    }
+    .range{
+        background-color: black;
+        color: white;
+        left: 30px;
+        border: 0;
+        top: 300px;
+        position: absolute;
+    }
+    #div1, #div2, #div3{
+        /* background-color: red; */
+        /* height: fit-content; */
+        /* width: fit-content; */
+        margin-top: 40px;
+        /* display: flex; */
+        justify-content: space-around;
+        gap: 40px;
+        line-height: 19px;
+        /* box-shadow: 5px 4px 5px 2px; */
+        padding: 20px;
+        font-size: 20px;
+        margin-left: 400px;
+    }
+    #total{
+        text-align: right;
+    }
+    .you{
+        background-color: black;
+        color: white;
+        font-size: 16px;
+    }
+</style>
+<body>
+    <div id="box">
+        <h1>Shopping list</h1><br>
+        <input id="shop" type="text" placeholder="Shopping item"><br>
+        <input id="price" type="number" placeholder="price"><br>
+        <input id="Quantity" type="number" placeholder="Quantity"><br>
+        <p id="total">Total:0</p>
+        <button class="range" onclick="submit()">Submit</button>
+
+
+    </div>
+    <div id="div1"> </div>
+    <!-- <div id="div2"></div>
+    <div id="div3"></div> -->
+</body>
+<script>
+    
+   const div1 =[]
+    
+//  function submit(){ 
+//     // div1.innerHTML += shop * Quantity 
+//     let div1 = document.getElementById("div1");
+//     let div2 = document.getElementById("div2");
+//     let div3 = document.getElementById("div3");
+//     let shop = document.getElementById("shop").value;
+//     let price = document.getElementById("price").value;
+//     let Quantity = document.getElementById("Quantity").value;
+//     let total = document.getElementById("total")
+//     let num1 = Number (price.value);
+//     let num2 = Number (Quantity.value);
+
+function submit(){
+    const shop = document.getElementById('shop').value;
+    const price =parseFloat(document.getElementById('price').value);
+    const Quantity =parseFloat(document.getElementById('Quantity').value);
+    const subtotal = Quantity * price;
+    
+    // total.innerHTML =`Total:${subtotal}`
+
+    div1.push({shop,price,Quantity,subtotal})
+
+    document.getElementById('shop').value = '';
+    document.getElementById('price').value = '';
+    document.getElementById('Quantity').value = '';
+
+    displaydiv1();
+}
+
+function editItem(index) {
+    const newName = prompt("Enter the Item")
+   
+
+    if (newName !==null){
+        div1[index].shop = newName;
+
+       
+        displaydiv1();
+    } const newprice = prompt("Enter the price")
+    if (newprice !==null){
+                div1[index].price = newprice;
+                displaydiv1();
+    } 
+    const newNx = prompt("Enter the Quantity")
+   if (newNx !==null){
+         div1[index].Quantity = newNx;
+    
+        displaydiv1();
+    }
+    if (total !==0) {
+         div1[index].subtotal = newprice * newNx
+        displaydiv1();
+        }
+   
+}
+
+function deleteItem(index) {
+    div1.splice(index,1);
+    displaydiv1();
+}
+function displaydiv1() {
+    const container = document.getElementById('div1');
+    container.innerHTML = '';
+    div1.forEach((item, index) => {
+const items = document.createElement('div')        
+        items.innerHTML = `
+        Item:${item.shop}   ,  
+        Price:${item.price} 
+        Quantity:${item.Quantity}   
+        Sub-total:${item.subtotal}  
+        <button class="you" onclick="editItem(${index})">Edit</button>
+        <button class="you" onclick="deleteItem(${index})">Delete</button>
+        `
+        container.appendChild(items);
+        let add = document.getElementById("total").value;
+        let sum = div1.reduce((total,item,index)=>{
+            console.log(item.subtotal);
+            let res = total + item.subtotal
+
+            add.innerHTML = res
+        }, 0)
+    });
+}
+ 
+ const strshop = JSON.stringify(div1)
+ localStorage.setItem("shop",displaydiv1)
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+//     function edititem(index){
+//     const newName = prompt("Enter the new item")
+//     if (newName !==null){
+//         ShoppingList[index].Quantity = newName;
+//         displaydiv1();
+//     }
+//  }
+//     // div1.innerHTML = [
+    //     `item:${shop}`+"   "+"     " +  `price:${price}`+ `Quantity:${Quantity}` + `sub-total:${subtotal}` + `<button onclick="edititem(${index})">Edit</button>`,
+    //     // `item:${shop}`+"   "+"     " +  `price:${price}`+ `Quantity:${Quantity}` + `sub-total:${subtotal}`<br>,
+    //     `item:${shop}`+"   "+"     " +  `price:${price}`+ `Quantity:${Quantity}` + `sub-total:${subtotal}`,
+    // ]
+    // div2.innerHTML = `item:${shop}`+"   "+"     " +  `price:${price}`+ `Quantity:${Quantity}` + `sub-total:${subtotal}` 
+    // div3.innerHTML = `item:${shop}`+"   "+"     " +  `price:${price}`+ `Quantity:${Quantity}` + `sub-total:${subtotal}` 
+
+
+    // total.innerHTML =   `Total:${subtotal}`
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+</script>
+</html>

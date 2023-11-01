@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/87df78beab.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    #wrap{
+        width: 100%;
+        height: 100vh;
+        background-color: whitesmoke;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #calbox{
+        position: relative;
+        width: 330px;
+        height: 535px;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: block;
+        align-items: top;
+        justify-content: space-between;
+        
+    }
+
+    #snav{
+        width: 100%;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: transparent;
+        margin: 10px;
+    }
+
+    #icon{
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #box{
+        width: 10px;
+        height: 10px;
+        background-color: transparent;
+    }
+    #stan{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #three{
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #reload{
+        margin-right: 10px;
+    }
+
+    #display{
+        width: 98%;
+        height: 70px;
+        /* background-color: antiquewhite; */
+        font-size: 17px;
+        color: black;
+    }
+
+    #mseries button{
+        padding: 12px;
+        border: 0;
+        background-color: transparent;
+    }
+    #mseries{
+        display: flex;
+        justify-content: space-around; 
+    }
+
+    #numcon button{
+        padding: 14px 31px;
+        flex: 1;
+    }
+    #numcon{
+        position: relative;
+        width: 100%;
+        display: grid;
+        grid-auto-columns: auto;
+    }
+
+    #firstline {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #sc{
+        height: 30px;
+        width: 98%;
+        background-color: transparent;
+        border: 0;
+    }
+</style>
+<body>
+    <div id="wrap">
+        <div id="calbox">
+            <div id="snav">
+                <span>Calculator</span>
+                <div id="icon">
+                    <span>-</span>
+                    <button id="box"></button>
+                    <span>x</span>
+                </div>
+            </div>
+
+            <div id="stan">
+                <div id="three">
+                    <i class="fa-solid fa-bars"></i>
+                    <h2>Standard</h2>
+                    <i class="fa-solid fa-up-right-from-square"></i>
+                </div>
+                <div id="reload">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>  
+            </div>
+            <div id="calculator">
+            <input type="text" id="sc">
+            <input type="text" id="display" disabled>
+
+            <div id="mseries">
+                <button>MC</button>
+                <button>MR</button>
+                <button>M+</button>
+                <button>MS</button>
+                <button>MS</button>
+                <button>M-</button>
+            </div>
+
+            
+            <div id="numcon">
+                <div id="firstline">
+                    <button onclick="appendToDisplay('%')">%</button>
+                    <button onclick="appendToDisplay('')">CE</button>
+                    <button onclick="clearDisplay()">C</button>
+                    <button  onclick="display.value = display.value.toString().slice(0,-1) " ><i class="fa-solid fa-delete-left"></i></button>
+                </div>
+                <div id="firstline">
+                    <button>1/x</button>
+                    <button>x</button>
+                    <button>C</button>
+                    <button onclick="appendToDisplay('/')">/</i></button>
+                </div>
+                <div id="firstline">
+                    <button onclick="appendToDisplay('7')">7</button>
+                    <button onclick="appendToDisplay('8')">8</button>
+                    <button onclick="appendToDisplay('9')">9</button>
+                    <button onclick="appendToDisplay('*')">×</i></button>
+                </div>
+                <div id="firstline">
+                    <button onclick="appendToDisplay('4')">4</button>
+                    <button onclick="appendToDisplay('5')">5</button>
+                    <button onclick="appendToDisplay('6')">6</button>
+                    <button onclick="appendToDisplay('-')">-</i></button>
+                </div>
+                <div id="firstline">
+                    <button onclick="appendToDisplay('3')">3</button>
+                    <button onclick="appendToDisplay('2')">2</button>
+                    <button onclick="appendToDisplay('1')">1</button>
+                    <button onclick="appendToDisplay('+')">+</i></button>
+                </div>
+                <div id="firstline">
+                    <button onclick="appendToDisplay('±')">±</button>
+                    <button onclick="appendToDisplay('0')">0</button>
+                    <button onclick="appendToDisplay('.')">.</button>
+                    <button onclick="calculateResult()">=</i></button>
+                </div>
+           
+          </div>
+        </div>
+       
+    </div>
+
+ 
+</body>
+<script>
+    let displayValue = "";
+    let scValue = "";
+
+    function appendToDisplay(value){
+        displayValue += value
+        document.getElementById("display").value = displayValue;
+    }
+
+    function clearDisplay() {
+        displayValue = "";
+        document.getElementById("display").value = displayValue;
+    }
+
+    function calculateResult() {
+        try {
+            const result = eval(displayValue);
+            document.getElementById("display").value = result;
+            displayValue = result.toString();
+        } catch (error) {
+            document.getElementById("display").value = "Error"
+        }
+
+    }
+    // let scValue = "";
+
+    // function appendToDisplay(value){
+    //     scValue += value
+    //     document.getElementById("sc").value = scValue;
+    // }
+
+    // function clearDisplay() {
+    //     scValue = "";
+    //     document.getElementById("sc").value = scValue;
+    // }
+
+    // function calculateResult() {
+    //     try {
+    //         scValue += value
+    //         document.getElementById("sc").value = value;
+    //     } catch (error) {
+    //         document.getElementById("sc").value = "Error"
+    //     }
+
+    // }
+
+</script>
+</html>

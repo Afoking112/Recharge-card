@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping List</title>
+</head>
+<body>
+    <h1>Shopping List</h1>
+
+    <!-- Form for adding items -->
+    <form id="addItemForm">
+        <input type="text" id="itemName" placeholder="Shopping item" required>
+        <input type="number" id="itemPrice" placeholder="Price" step="0.01" required>
+        <input type="number" id="itemQuantity" placeholder="Quantity" required>
+        <button type="button" onclick="addItem()">Add</button>
+    </form>
+
+    <!-- Container to display items and totals -->
+    <div id="shoppingList"></div>
+
+    <script>
+        // Initialize an empty shopping list
+        const shoppingList = [];
+
+        // Function to add an item to the list
+        function addItem() {
+            const itemName = document.getElementById('itemName').value;
+            const itemPrice = parseFloat(document.getElementById('itemPrice').value);
+            const itemQuantity = parseInt(document.getElementById('itemQuantity').value);
+
+            if (!itemName || isNaN(itemPrice) || isNaN(itemQuantity)) {
+                alert("Please fill in all fields with valid values.");
+                return;
+            }
+
+            const subtotal = itemPrice * itemQuantity;
+            shoppingList.push({ itemName, itemPrice, itemQuantity, subtotal });
+
+            // Clear the input fields
+            document.getElementById('itemName').value = '';
+            document.getElementById('itemPrice').value = '';
+            document.getElementById('itemQuantity').value = '';
+
+            displayShoppingList();
+        }
+
+        // Function to edit an item in the list
+        function editItem(index) {
+            const newName = prompt("Enter the new item name:", shoppingList[index].itemName);
+            if (newName !== null) {
+                shoppingList[index].itemName = newName;
+                displayShoppingList();
+            }
+        }
+
+        // Function to delete an item from the list
+        function deleteItem(index) {
+            shoppingList.splice(index, 1);
+            displayShoppingList();
+        }
+
+        // Function to display the shopping list
+        function displayShoppingList() {
+            const container = document.getElementById('shoppingList');
+            container.innerHTML = '';
+
+            shoppingList.forEach((item, index) => {
+                const itemContainer = document.createElement('div');
+                itemContainer.innerHTML = `
+                    Item: ${item.itemName}, 
+                    Price: $${item.itemPrice}, 
+                    Quantity: ${item.itemQuantity}, 
+                    Subtotal: $${item.subtotal.toFixed(2)}
+                    <button onclick="editItem(${index})">Edit</button>
+                    <button onclick="deleteItem(${index})">Delete</button>
+                `;
+                container.appendChild(itemContainer);
+            });
+        }
+    </script>
+</body>
+</html>

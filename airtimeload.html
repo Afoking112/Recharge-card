@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<label for="">network provider</label>
+<select name="" id="network">
+    <option value="MTN">MTN</option>
+    <option value="GLO">GLO</option>
+    <option value="AIRTEL">AIRTEL</option>
+    <option value="9Mobile">9Mobile</option>
+</select>
+<label for="">Amount</label>
+<select name="" id="amount">
+    <option value="100">100</option>
+    <option value="200">200</option>
+    <option value="500">500</option>
+    <option value="1000">1000</option>
+</select>
+<button onclick="genpin()">Generate pin</button>
+<h1 id="dispPin"></h1>
+
+<h1>Load Airtime</h1>
+<input type="text" id="loadMTN">
+<button onclick="loadMTNCard()">Load MTN</button>
+</body>
+<script>
+    let network = document.getElementById("network");
+    let amount = document.getElementById("amount");
+    let dispPin = document.getElementById("dispPin");
+function genpin(){
+    let pin = Math.floor(Math.random()* 10000000);
+    dispPin.innerHTML = pin
+    alert(`You have generate ${network.value} of ${amount.value}`)
+}
+
+
+    function loadMTNCard(){
+        let pin = document.getElementById("dispPin").innerHTML
+        if(!loadMTN.value.startsWith("*555") || !loadMTN.value.endsWith("#") || !loadMTN.value.includes(pin)){
+            alert("Check Network well before recharging")
+            // alert(`You have recharge ${network.value} of ${amount.value}`)
+        }
+        else if(network.value === "MTN"){
+            alert(`You have recharge ${network.value} of ${amount.value}`)
+        }
+        
+        else{
+            alert("INVALID NETWORK PROVIDER")
+        }
+
+        
+    } 
+
+    
+</script>
+</html>

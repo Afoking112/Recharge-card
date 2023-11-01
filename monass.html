@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 200px;
+            height: 40px;
+            color: black;
+            font-size: 20px;
+        }
+        #div1,#div2,#div3,#div4,#div5{
+            background-color: transparent;
+            height: 40PX;
+            width: 500PX;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <input placeholder="click me" type="button" value="Click me" onclick="clickme()">
+    <div id="div1" ></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="div5"></div>
+</body>
+<script>
+ 
+     
+    function clickme() {
+
+       userinput = prompt(" enter")
+    //   let userinput2 = userinput.toUpperCase()
+    //   let div2 = document.getElementById("div2")
+    //   let div1 =  document.getElementById("div1")
+        div1.innerHTML = "The length of the srting is  " + userinput.length; 
+        div2.innerHTML = "The String in uppercase is  " + userinput.toUpperCase(); 
+        div3.innerHTML= "The String in lower case is  " + userinput.toLowerCase();
+        div4.innerHTML= "The index of A in the string is " + userinput.indexOf("A")
+        
+        // userinput2.includes("Javascript") ? "The word Javascript Exist" : "The word Javascript does not Exist"
+
+        const find = "JAVASCRIPT";
+        const userinputLower = userinput.toLowerCase();
+        const JAVASCRIPT = JAVASCRIPT.toLowerCase();
+      
+       if (userinputLower.includes("javascript")) {
+        div5.innerHTML += (`The word ${find} Exist`) 
+       } else if (userinput2.toUpperCase().include("JAVASCRIPT")) {
+        div5.innerHTML = ("The word  Javascript Exist") 
+    } else {
+        div5.innerHTML = (`The word ${find} does not Exist`) 
+    }
+        
+       
+
+       
+      }
+     
+    
+</script>
+</html>

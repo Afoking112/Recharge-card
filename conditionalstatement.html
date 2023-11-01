@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+#div3{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    border-radius: 20px;
+}
+#div4{
+    width: 400px;
+    height: 100px;
+    background-color: blue;
+}
+</style>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+
+
+<input type="text" id="input1">
+<button onclick="changeColor()">Change color</button>
+<div id="div4"></div>
+</body>
+<script>
+let div2 = document.getElementsByClassName("div2")
+
+let div1 = document.querySelector("#div1")
+    div1.style.backgroundColor ="red"
+    div1.style.width = "200px"
+    div1.style.height = "200px"
+    div1.innerText = "welcome to java script"
+
+    let div3 = document.createElement("div")
+    let parent = document.body;
+    div3.id = "div3"
+    parent.appendChild(div3)
+
+    let input1 = document.getElementById("input1")
+    let div4 = document.getElementById("div4")
+
+    function changeColor(){
+        let color = input1.value;
+        div4.style.backgroundColor = color;
+    }
+
+    // conditional
+    // let test = prompt("Enter a number");
+    // test = Number(test)
+    // if (test % 2 === 0) {
+    //     alert(`${test}is divided by 2`);
+    // } else if (test % 3 === 0) {
+    //     alert(`${test}is divided by 3`)
+    // } else if (tets % 5 === 0) {
+    //     alert(`${test}is divided by 5`)
+    // } else {
+    //     alert(`${test}is just there`)
+    // }
+
+    // switch case statement
+    // let date = prompt("Enter the day of the week")
+    // date = Number(date)
+    // switch (date) {
+    //     case 1:
+    //         alert("The day is sunday");
+    //         break;
+    //     case 2:
+    //         alert("The day is Monday");
+    //         break;
+    //     case 3: 
+    //         alert("The day is Tuesday");
+    //         break;
+    //     case 4:
+    //         alert("The day is Wednesday");
+    //         break;
+    //     case 5:
+    //         alert("The day is Thursday");
+    //         break;
+    //     case 6:
+    //         alert("The day is Friday");
+    //         break;
+    //     case 7:
+    //         alert("The day is Saturday");
+    //         break;
+    //     default:
+    //         alert("invalid date")
+    //         break;
+    // }
+</script>
+
+</html>

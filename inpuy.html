@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="input1">
+    <input type="number" id="input2">
+    <button onclick="add()"> +</button>
+    <div id="div1"></div>
+    <input id="com1" type="text">
+    <input type="text" name="" id="com2">
+    <button onclick="com()">compare</button>
+    <div id="div2"></div>
+</body>
+<script>
+    
+    // let div1 = document.getElementById("div1");
+    function add(){
+        let input1 = document.getElementById("input1").value;
+    let input2 = document.getElementById("input2").value;
+    
+        div1.innerHTML = Number(input1) + Number(input2);
+
+    
+    }
+    function com(){
+        let com1 = document.getElementById("com1").value;
+        let com2 = document.getElementById("com2").value;
+        if(com1 === com2){
+            alert("the same ")
+        }else if(com1 !== com2){
+            alert(" not the same ")
+        }
+
+    }
+
+
+</script>
+</html>

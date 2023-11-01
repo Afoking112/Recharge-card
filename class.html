@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //classes in  js
+    class Car {
+        name;
+        brand;
+        year;
+        constructor(name,brand,year){
+            this.brand = brand;
+            this.name = name;
+            this.year = year; 
+            console.log(`the name of the car ${name} and the brand of the car ${brand} in the year ${year}`)
+        }
+        returnname(){
+            return `car name is ${this.name} and the brand is ${this.brand} in the year ${this.year}`
+        }
+
+        get name (){
+            return this .brand
+        }
+        get brand (){
+            return this.brand;
+        }
+        set carname(newname){
+            this.name = newname;
+        }
+
+        test = "Adewole"; 
+    }
+    let car = new Car ("Camry","Toyota","2023");
+    console.log(car.name)
+    car.carname = "supra";
+    
+    let car2 = new Car ("4Matic","Toyota","2023");
+    let test = car2.returnname();
+    console.log(test)
+
+    class ElectricCar extends Car {
+        constructor (name,brand,year){
+            super(name,brand,year)
+
+        }
+        showTest(){
+            return this.test
+        }
+    }
+     let test2 = new ElectricCar("test","ram","2000")
+     console.log(test2.showTest())
+</script>
+</html>

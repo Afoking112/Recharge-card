@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleacc.css">
+    
+</head>
+<body>
+    <div class="rating">
+        <div class="score-range">
+            <span class="score-label">1</span>
+            <span class="score-label">50</span>
+            <span class="score-label">100</span>
+        </div>
+        <div class="categories">
+            <div class="category">Good</div>
+            <div class="category">Fair</div>
+            <div class="category">Excellent</div>
+        </div>
+
+        <input type="range" 
+        min="1" 
+        max="100" 
+        step="1" 
+        class="score-slider" 
+        id="score" 
+        value="50"
+        />
+        <p class="selected-category">Category: Fair</p>
+    </div>
+</body>
+<script>
+    const scoreSlider = document.getElementById('score');
+const selectedCategory = document.querySelector('.selected-category');
+
+
+scoreSlider.addEventListener('input', updateCategory);
+
+function updateCategory() {
+    const score = scoreSlider.Value;
+
+    if (score <=33) {
+        selectedCategory.textContent ='Category: Good';
+    }else if (score <= 66) {
+        selectedCategory.textContent = 'Category: Fair'
+    }else { 
+        selectedCategory.textContent = 'Category:Excellent'
+    }
+}
+</script>
+</html>
