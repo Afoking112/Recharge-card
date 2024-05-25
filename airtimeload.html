@@ -40,7 +40,7 @@ function genpin(){
 
     function loadMTNCard(){
         let pin = document.getElementById("dispPin").innerHTML
-        if(!loadMTN.value.startsWith("*555") || !loadMTN.value.endsWith("#") || !loadMTN.value.includes(pin)){
+        if(!loadMTN.value.startsWith("*311*") || !loadMTN.value.endsWith("#") || !loadMTN.value.includes(pin)){
             alert("Check Network well before recharging")
             // alert(`You have recharge ${network.value} of ${amount.value}`)
         }
